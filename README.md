@@ -11,6 +11,7 @@ It reads your facial expressions through the webcam, takes voice commands, runs 
 ![OpenCV](https://img.shields.io/badge/OpenCV-YuNet-5C3EE8?logo=opencv&logoColor=white)
 ![ONNX Runtime](https://img.shields.io/badge/ONNX_Runtime-CNN-005CED?logo=onnx&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-NLP-F7931E?logo=scikitlearn&logoColor=white)
+[![CI](https://github.com/Vardhansaigadde/INTERVIEW-PREP-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/Vardhansaigadde/INTERVIEW-PREP-AI/actions/workflows/ci.yml)
 ![Tests](https://img.shields.io/badge/tests-44_passing-2ea44f)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
