@@ -1,0 +1,23 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node / build output
+node_modules/
+frontend/dist/
+
+# Local data and downloaded / generated models (run.ps1 downloads the models)
+data/*.db
+data/fer2013/
+models/*.onnx
+models/*.joblib
+models/*.pt
+
+# Editor / tool settings
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

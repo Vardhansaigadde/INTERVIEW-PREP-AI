@@ -1,0 +1,154 @@
+{
+  "questions": [
+    {
+      "id": "hr-about-yourself", "category": "HR", "ideal_seconds": [60, 120],
+      "text": "Tell me about yourself.",
+      "tip": "Present, past, future: who you are now, what you've done that's relevant, and why you want this role.",
+      "key_points": [
+        {"label": "Current role or studies", "keywords": ["currently", "student", "studying", "final year", "working as", "i am a", "i'm a", "degree"]},
+        {"label": "Relevant experience or project", "keywords": ["project", "internship", "experience", "worked on", "built", "developed"]},
+        {"label": "A key skill or strength", "keywords": ["skill", "strength", "good at", "experienced in", "proficient", "python", "java", "react"]},
+        {"label": "Why this role / future goal", "keywords": ["looking for", "want to", "goal", "excited", "this role", "this company", "opportunity", "future"]}
+      ]
+    },
+    {
+      "id": "hr-why-hire", "category": "HR", "ideal_seconds": [45, 90],
+      "text": "Why should we hire you?",
+      "tip": "Match 2-3 of your strengths to the job, each with a quick example.",
+      "key_points": [
+        {"label": "Specific strengths", "keywords": ["strength", "skill", "good at", "experience in", "quick learner", "problem solving"]},
+        {"label": "Proof / example", "keywords": ["for example", "for instance", "when i", "project", "internship", "achieved"]},
+        {"label": "Link to the role", "keywords": ["this role", "this position", "your team", "the company", "requirements", "contribute", "add value"]}
+      ]
+    },
+    {
+      "id": "hr-weakness", "category": "HR", "ideal_seconds": [45, 90],
+      "text": "What is your greatest weakness?",
+      "tip": "Pick a real but manageable weakness and explain what you're doing to improve it.",
+      "key_points": [
+        {"label": "Names a real weakness", "keywords": ["weakness", "i tend to", "i struggle", "i used to", "not very good", "difficult for me"]},
+        {"label": "Steps to improve", "keywords": ["improve", "working on", "learning", "practice", "started", "now i", "to fix"]},
+        {"label": "Shows progress", "keywords": ["better", "progress", "result", "now", "improved", "helped"]}
+      ]
+    },
+    {
+      "id": "hr-five-years", "category": "HR", "ideal_seconds": [30, 75],
+      "text": "Where do you see yourself in five years?",
+      "tip": "Show ambition that fits the company: growing skills and taking on more responsibility.",
+      "key_points": [
+        {"label": "Skill growth", "keywords": ["learn", "grow", "skills", "expert", "master", "develop"]},
+        {"label": "More responsibility", "keywords": ["lead", "responsibility", "senior", "mentor", "manage", "own"]},
+        {"label": "Fits this company", "keywords": ["this company", "here", "organisation", "organization", "your team", "with you"]}
+      ]
+    },
+    {
+      "id": "beh-conflict", "category": "Behavioural", "ideal_seconds": [60, 120],
+      "text": "Tell me about a time you had a disagreement with a teammate. How did you handle it?",
+      "tip": "Use STAR. Focus on listening and finding common ground. Never blame.",
+      "key_points": [
+        {"label": "Situation", "keywords": ["project", "team", "during", "when we", "situation", "assignment"]},
+        {"label": "Your actions", "keywords": ["i listened", "i suggested", "i spoke", "i talked", "i proposed", "discussed", "i decided", "i explained"]},
+        {"label": "Result", "keywords": ["result", "in the end", "finally", "agreed", "delivered", "completed", "outcome"]},
+        {"label": "What you learned", "keywords": ["learned", "learnt", "taught me", "lesson", "next time", "realised", "realized"]}
+      ]
+    },
+    {
+      "id": "beh-failure", "category": "Behavioural", "ideal_seconds": [60, 120],
+      "text": "Describe a time you failed. What did you learn?",
+      "tip": "Own the mistake briefly, then spend most of the answer on what you changed.",
+      "key_points": [
+        {"label": "Owns the mistake", "keywords": ["i failed", "my mistake", "i missed", "i didn't", "i did not", "i underestimated", "my fault"]},
+        {"label": "Actions afterwards", "keywords": ["so i", "i then", "after that", "i started", "i changed", "fixed"]},
+        {"label": "Lesson learned", "keywords": ["learned", "learnt", "lesson", "taught me", "now i", "since then"]}
+      ]
+    },
+    {
+      "id": "beh-deadline", "category": "Behavioural", "ideal_seconds": [60, 120],
+      "text": "Tell me about a time you worked under a tight deadline.",
+      "tip": "Show how you prioritised, communicated and delivered.",
+      "key_points": [
+        {"label": "The deadline", "keywords": ["deadline", "days", "hours", "week", "time", "urgent"]},
+        {"label": "Prioritising", "keywords": ["prioritised", "prioritized", "priority", "plan", "broke it down", "focused on", "split"]},
+        {"label": "Communication", "keywords": ["communicated", "told", "updated", "informed", "team", "manager", "professor"]},
+        {"label": "Outcome", "keywords": ["delivered", "submitted", "completed", "finished", "on time", "result"]}
+      ]
+    },
+    {
+      "id": "beh-leadership", "category": "Behavioural", "ideal_seconds": [60, 120],
+      "text": "Give an example of when you showed leadership.",
+      "tip": "Leadership doesn't need a title. Show initiative, guiding others and the impact.",
+      "key_points": [
+        {"label": "Took initiative", "keywords": ["i took", "i volunteered", "i organised", "i organized", "i led", "initiative", "stepped up"]},
+        {"label": "Helped others", "keywords": ["team", "helped", "guided", "mentored", "motivated", "assigned", "coordinated"]},
+        {"label": "Impact", "keywords": ["result", "impact", "improved", "won", "increased", "reduced", "successful", "%"]}
+      ]
+    },
+    {
+      "id": "tech-process-thread", "category": "Technical", "ideal_seconds": [30, 90],
+      "text": "Explain the difference between a process and a thread.",
+      "tip": "Define both, then compare memory, cost of switching, and an example.",
+      "key_points": [
+        {"label": "Process has its own memory", "keywords": ["own memory", "separate memory", "address space", "independent"]},
+        {"label": "Threads share memory", "keywords": ["share", "shared memory", "same memory", "within a process", "inside a process"]},
+        {"label": "Switching cost", "keywords": ["context switch", "lightweight", "cheaper", "faster", "overhead"]},
+        {"label": "An example", "keywords": ["example", "browser", "tab", "for instance", "like a"]}
+      ]
+    },
+    {
+      "id": "tech-tcp-udp", "category": "Technical", "ideal_seconds": [30, 90],
+      "text": "What is the difference between TCP and UDP? When would you use each?",
+      "tip": "Compare reliability, ordering and speed, then give a use case for each.",
+      "key_points": [
+        {"label": "TCP is reliable / connection-based", "keywords": ["reliable", "connection", "handshake", "acknowledg", "guarantee"]},
+        {"label": "UDP is fast / connectionless", "keywords": ["connectionless", "faster", "no guarantee", "unreliable", "lightweight"]},
+        {"label": "Ordering", "keywords": ["order", "sequence"]},
+        {"label": "Use cases", "keywords": ["video", "gaming", "streaming", "dns", "web", "http", "email", "file transfer"]}
+      ]
+    },
+    {
+      "id": "tech-oop-pillars", "category": "Technical", "ideal_seconds": [45, 120],
+      "text": "Explain the four pillars of object-oriented programming.",
+      "tip": "Name all four with a one-line example each.",
+      "key_points": [
+        {"label": "Encapsulation", "keywords": ["encapsulation"]},
+        {"label": "Abstraction", "keywords": ["abstraction"]},
+        {"label": "Inheritance", "keywords": ["inheritance", "inherit"]},
+        {"label": "Polymorphism", "keywords": ["polymorphism"]}
+      ]
+    },
+    {
+      "id": "tech-sql-join", "category": "Technical", "ideal_seconds": [30, 90],
+      "text": "What is the difference between an INNER JOIN and a LEFT JOIN?",
+      "tip": "Explain which rows each returns, ideally with a small example.",
+      "key_points": [
+        {"label": "Inner join returns only matches", "keywords": ["only matching", "matching rows", "both tables", "common"]},
+        {"label": "Left join keeps all left rows", "keywords": ["all rows from the left", "all the rows from the left", "left table", "all records"]},
+        {"label": "NULLs for missing matches", "keywords": ["null"]},
+        {"label": "An example", "keywords": ["example", "customers", "orders", "employees", "students", "for instance"]}
+      ]
+    },
+    {
+      "id": "tech-hashmap", "category": "Technical", "ideal_seconds": [45, 120],
+      "text": "How does a hash map work internally?",
+      "tip": "Cover hashing to a bucket, collisions, and time complexity.",
+      "key_points": [
+        {"label": "Hash function to an index/bucket", "keywords": ["hash function", "hash code", "hashcode", "bucket", "index"]},
+        {"label": "Collisions", "keywords": ["collision", "chaining", "linked list", "open addressing", "probing"]},
+        {"label": "O(1) average lookup", "keywords": ["o(1)", "o of 1", "constant time", "constant"]},
+        {"label": "Resizing / load factor", "keywords": ["load factor", "resize", "rehash", "grow"]}
+      ]
+    },
+    {
+      "id": "tech-project", "category": "Technical", "ideal_seconds": [60, 150],
+      "text": "Walk me through a project you're proud of.",
+      "tip": "Problem, your role, tech stack, one hard challenge, and the result.",
+      "key_points": [
+        {"label": "The problem", "keywords": ["problem", "goal", "aim", "needed", "purpose", "built a", "app that"]},
+        {"label": "Your role", "keywords": ["i built", "i designed", "i developed", "i was responsible", "my role", "i implemented", "i worked on"]},
+        {"label": "Tech stack", "keywords": ["python", "java", "react", "node", "sql", "database", "api", "fastapi", "django", "flask", "tensorflow", "pytorch"]},
+        {"label": "A challenge", "keywords": ["challenge", "difficult", "problem was", "issue", "bug", "hard part"]},
+        {"label": "The result", "keywords": ["result", "users", "accuracy", "improved", "reduced", "%", "deployed", "won"]}
+      ]
+    }
+  ]
+}

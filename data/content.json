@@ -1,0 +1,312 @@
+{
+  "subjects": [
+    {
+      "name": "Data Structures & Algorithms",
+      "topics": [
+        {
+          "name": "Time & Space Complexity",
+          "materials": [
+            {
+              "title": "Big-O basics",
+              "level": "basic",
+              "body": "Big-O describes how the running time or memory grows as the input size n grows. Constants and smaller terms are dropped.\n\nCommon growth rates, from fastest to slowest:\n- O(1): constant, e.g. reading an array element by index\n- O(log n): halving the input each step, e.g. binary search\n- O(n): one pass over the data\n- O(n log n): efficient sorting (merge sort, heap sort)\n- O(n^2): nested loops over the same data\n- O(2^n): trying every subset\n\nInterview tip: always state the time AND the space complexity of your solution.",
+              "url": "https://en.wikipedia.org/wiki/Big_O_notation"
+            },
+            {
+              "title": "Analysing loops and recursion",
+              "level": "advanced",
+              "body": "- Sequential blocks add up: O(n) + O(n^2) = O(n^2).\n- Nested loops multiply: an outer loop of n and an inner loop of m gives O(n*m).\n- If the loop variable doubles or halves each step (i *= 2), the loop runs O(log n) times.\n- Recursion: work per call x number of calls. Naive Fibonacci makes about 2^n calls, so it is O(2^n). With memoisation it becomes O(n).\n- Recursion uses stack space: depth d means O(d) extra memory.\n\nInterview tip: if you mention hash maps, say 'O(1) on average, O(n) in the worst case'.",
+              "url": "https://en.wikipedia.org/wiki/Time_complexity"
+            }
+          ],
+          "questions": [
+            {"text": "What is the time complexity of binary search on a sorted array?", "options": ["O(log n)", "O(n)", "O(1)", "O(n log n)"], "answer": 0, "difficulty": 1, "explanation": "Each step halves the search space."},
+            {"text": "Two nested loops, each running from 0 to n, have a time complexity of:", "options": ["O(n^2)", "O(n)", "O(2n)", "O(log n)"], "answer": 0, "difficulty": 1, "explanation": "n iterations of the outer loop times n of the inner loop gives n^2."},
+            {"text": "Which sorting algorithm has a worst-case time of O(n log n)?", "options": ["Merge sort", "Quick sort", "Bubble sort", "Insertion sort"], "answer": 0, "difficulty": 2, "explanation": "Quick sort is O(n log n) on average but O(n^2) in the worst case. Merge sort is always O(n log n)."},
+            {"text": "A loop runs `for (i = 1; i < n; i *= 2)`. How many times does it run?", "options": ["O(log n)", "O(n)", "O(n/2)", "O(sqrt n)"], "answer": 0, "difficulty": 2, "explanation": "i doubles each time, so it reaches n after about log2(n) steps."},
+            {"text": "What is the time complexity of the naive recursive Fibonacci function?", "options": ["O(2^n)", "O(n)", "O(n^2)", "O(log n)"], "answer": 0, "difficulty": 3, "explanation": "Each call makes two more calls, so the call tree grows exponentially. Memoisation brings it down to O(n)."}
+          ]
+        },
+        {
+          "name": "Arrays & Strings",
+          "materials": [
+            {
+              "title": "Array and string patterns",
+              "level": "basic",
+              "body": "Arrays give O(1) access by index. Inserting or deleting in the middle is O(n) because elements must shift.\n\nPatterns that come up again and again in interviews:\n- Two pointers: one at each end moving inward (e.g. reverse a string, check a palindrome, pair with a target sum in a sorted array).\n- Hash map lookups: store what you have seen so you can find a match in O(1) (e.g. Two Sum).\n- Frequency counting: count characters to check anagrams.\n\nStrings in Java and Python are immutable, so building a string in a loop with + can be O(n^2). Use a StringBuilder or ''.join().",
+              "url": "https://en.wikipedia.org/wiki/Array_(data_structure)"
+            },
+            {
+              "title": "Sliding window and prefix sums",
+              "level": "advanced",
+              "body": "Sliding window: keep a window [left, right] and move it forward instead of restarting. This turns many O(n^2) brute-force answers into O(n).\n- Example: longest substring without repeating characters. Grow right; when a repeat appears, move left past the earlier copy.\n\nPrefix sums: pre[i] = a[0] + ... + a[i-1]. The sum of a[l..r] is then pre[r+1] - pre[l], in O(1).\n\nKadane's algorithm finds the maximum subarray sum in O(n): at each element, either extend the current run or start a new one.",
+              "url": "https://en.wikipedia.org/wiki/Maximum_subarray_problem"
+            }
+          ],
+          "questions": [
+            {"text": "What is the time complexity of accessing an array element by its index?", "options": ["O(1)", "O(n)", "O(log n)", "O(n^2)"], "answer": 0, "difficulty": 1, "explanation": "The address is calculated directly from the index."},
+            {"text": "Which approach solves 'Two Sum' (find two numbers that add up to a target) in O(n) time?", "options": ["A hash map of values already seen", "Two nested loops", "Sorting and then binary searching every pair", "Recursion"], "answer": 0, "difficulty": 1, "explanation": "For each number, check whether target - number is already in the map."},
+            {"text": "How do you check whether two strings are anagrams most efficiently?", "options": ["Compare character counts", "Compare every permutation", "Compare their lengths only", "Reverse one and compare"], "answer": 0, "difficulty": 2, "explanation": "Counting characters takes O(n). Generating permutations takes factorial time."},
+            {"text": "Which technique finds the longest substring without repeating characters in O(n)?", "options": ["Sliding window", "Binary search", "Divide and conquer", "Backtracking"], "answer": 0, "difficulty": 2, "explanation": "The window grows on the right and shrinks on the left whenever a character repeats."},
+            {"text": "Kadane's algorithm solves which problem in O(n)?", "options": ["Maximum subarray sum", "Longest common subsequence", "Shortest path in a graph", "Sorting an array"], "answer": 0, "difficulty": 3, "explanation": "At each element it decides whether to extend the current subarray or start a new one."}
+          ]
+        },
+        {
+          "name": "Linked Lists, Stacks & Queues",
+          "materials": [
+            {
+              "title": "Linked lists, stacks and queues",
+              "level": "basic",
+              "body": "- Linked list: nodes that point to the next node. Inserting at the head is O(1). Finding the k-th element is O(n).\n- Stack: last in, first out (LIFO). Push and pop are O(1). Used for undo, matching brackets and recursion.\n- Queue: first in, first out (FIFO). Used for breadth-first search and task scheduling.\n\nClassic question: check whether a string of brackets like '({[]})' is balanced. Push opening brackets onto a stack and pop when you see a closing one.",
+              "url": "https://en.wikipedia.org/wiki/Linked_list"
+            },
+            {
+              "title": "Fast and slow pointers",
+              "level": "advanced",
+              "body": "Two pointers moving at different speeds solve several linked list questions in O(n) time and O(1) space:\n- Find the middle: slow moves 1 step, fast moves 2. When fast reaches the end, slow is in the middle.\n- Detect a cycle (Floyd's algorithm): if there is a loop, fast eventually meets slow.\n\nReversing a linked list in place: keep prev, curr and next pointers and flip each link. This takes O(n) time and O(1) space.\n\nA queue can be built from two stacks, giving amortised O(1) per operation.",
+              "url": "https://en.wikipedia.org/wiki/Cycle_detection"
+            }
+          ],
+          "questions": [
+            {"text": "Which data structure works on the Last In, First Out (LIFO) principle?", "options": ["Stack", "Queue", "Linked list", "Heap"], "answer": 0, "difficulty": 1, "explanation": "The last item pushed is the first one popped."},
+            {"text": "Which data structure is used for breadth-first search (BFS)?", "options": ["Queue", "Stack", "Hash map", "Binary search tree"], "answer": 0, "difficulty": 1, "explanation": "BFS visits nodes level by level, in the order they were discovered."},
+            {"text": "What is the best data structure for checking whether brackets are balanced?", "options": ["Stack", "Queue", "Array sorted first", "Graph"], "answer": 0, "difficulty": 2, "explanation": "Each closing bracket must match the most recent unmatched opening bracket."},
+            {"text": "How do you find the middle of a linked list in one pass?", "options": ["Fast and slow pointers", "Count the length, then walk again", "Sort the list", "Use recursion only"], "answer": 0, "difficulty": 2, "explanation": "When the fast pointer (2 steps) reaches the end, the slow pointer (1 step) is in the middle."},
+            {"text": "Floyd's cycle detection uses how much extra space?", "options": ["O(1)", "O(n)", "O(log n)", "O(n^2)"], "answer": 0, "difficulty": 3, "explanation": "It only needs two pointers, while a visited set would need O(n)."}
+          ]
+        },
+        {
+          "name": "Trees & Graphs",
+          "materials": [
+            {
+              "title": "Trees and graph traversal",
+              "level": "basic",
+              "body": "- Binary search tree (BST): left subtree < node < right subtree. An in-order traversal visits the values in sorted order.\n- Search, insert and delete are O(log n) in a balanced BST and O(n) in a skewed one.\n- Traversals: pre-order (node, left, right), in-order (left, node, right), post-order (left, right, node), level-order (BFS).\n\nGraphs are nodes connected by edges. They are usually stored as an adjacency list.\n- BFS (queue) finds the shortest path in an unweighted graph.\n- DFS (stack or recursion) explores as deep as possible first.",
+              "url": "https://en.wikipedia.org/wiki/Binary_search_tree"
+            },
+            {
+              "title": "Shortest paths and ordering",
+              "level": "advanced",
+              "body": "- Dijkstra's algorithm: shortest paths when all edge weights are non-negative. With a min-heap it runs in O((V + E) log V).\n- Bellman-Ford handles negative weights and can detect negative cycles, in O(V * E).\n- Topological sort orders the tasks of a directed acyclic graph (DAG) so every dependency comes first. Use Kahn's algorithm (BFS on in-degrees) or DFS.\n- The height of a binary tree with n nodes is between log2(n) and n.\n\nInterview tip: for 'number of islands'-style grid questions, treat each cell as a node and run DFS or BFS.",
+              "url": "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+            }
+          ],
+          "questions": [
+            {"text": "Which traversal of a binary search tree gives the values in sorted order?", "options": ["In-order", "Pre-order", "Post-order", "Level-order"], "answer": 0, "difficulty": 1, "explanation": "Left, node, right visits smaller values before larger ones."},
+            {"text": "Which algorithm finds the shortest path in an unweighted graph?", "options": ["BFS", "DFS", "Binary search", "Quick sort"], "answer": 0, "difficulty": 1, "explanation": "BFS reaches nodes in order of how many edges away they are."},
+            {"text": "What is the worst-case search time in an unbalanced (skewed) BST?", "options": ["O(n)", "O(log n)", "O(1)", "O(n log n)"], "answer": 0, "difficulty": 2, "explanation": "A skewed tree is basically a linked list."},
+            {"text": "Dijkstra's algorithm does NOT work correctly when the graph has:", "options": ["Negative edge weights", "Cycles", "More than 100 nodes", "Undirected edges"], "answer": 0, "difficulty": 2, "explanation": "It assumes a node's distance is final once visited, which negative edges can break."},
+            {"text": "Topological sorting can only be done on which kind of graph?", "options": ["Directed acyclic graph (DAG)", "Any undirected graph", "A complete graph", "A graph with negative weights"], "answer": 0, "difficulty": 3, "explanation": "A cycle would mean a task depends on itself, so no valid order exists."}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CS Fundamentals",
+      "topics": [
+        {
+          "name": "Object-Oriented Programming",
+          "materials": [
+            {
+              "title": "The four pillars of OOP",
+              "level": "basic",
+              "body": "- Encapsulation: keep data private and expose it through methods (getters/setters).\n- Abstraction: show what an object does and hide how it does it (abstract classes, interfaces).\n- Inheritance: a child class reuses and extends a parent class ('is-a' relationship).\n- Polymorphism: the same call behaves differently depending on the object.\n\nTwo kinds of polymorphism:\n- Compile-time: method overloading (same name, different parameters).\n- Run-time: method overriding (a child class redefines a parent method).",
+              "url": "https://en.wikipedia.org/wiki/Object-oriented_programming"
+            },
+            {
+              "title": "SOLID and design questions",
+              "level": "advanced",
+              "body": "SOLID principles:\n- S: Single responsibility. A class should have one reason to change.\n- O: Open/closed. Open for extension, closed for modification.\n- L: Liskov substitution. A child class must work wherever the parent is expected.\n- I: Interface segregation. Prefer several small interfaces to one large one.\n- D: Dependency inversion. Depend on abstractions, not concrete classes.\n\nComposition ('has-a') is often preferred over inheritance because it keeps classes loosely coupled.\n\nCommon question: an abstract class can hold state and constructors, while an interface defines a contract that a class can implement many of.",
+              "url": "https://en.wikipedia.org/wiki/SOLID"
+            }
+          ],
+          "questions": [
+            {"text": "Hiding an object's data and exposing it only through methods is called:", "options": ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction"], "answer": 0, "difficulty": 1, "explanation": "Encapsulation bundles data with the methods that control access to it."},
+            {"text": "Method overloading is an example of:", "options": ["Compile-time polymorphism", "Run-time polymorphism", "Encapsulation", "Multiple inheritance"], "answer": 0, "difficulty": 1, "explanation": "The compiler picks the method from the parameter types."},
+            {"text": "A child class giving its own version of a parent's method is called:", "options": ["Overriding", "Overloading", "Abstraction", "Composition"], "answer": 0, "difficulty": 2, "explanation": "Overriding is resolved at run time based on the actual object."},
+            {"text": "Which SOLID principle says a class should have only one reason to change?", "options": ["Single responsibility", "Open/closed", "Liskov substitution", "Dependency inversion"], "answer": 0, "difficulty": 2, "explanation": "That is the S in SOLID."},
+            {"text": "'Favour composition over inheritance' mainly helps to:", "options": ["Reduce tight coupling between classes", "Make code run faster", "Remove the need for interfaces", "Allow multiple constructors"], "answer": 0, "difficulty": 3, "explanation": "A class that holds other objects can swap them without being tied to a parent class."}
+          ]
+        },
+        {
+          "name": "DBMS & SQL",
+          "materials": [
+            {
+              "title": "Keys, joins and SQL basics",
+              "level": "basic",
+              "body": "- Primary key: uniquely identifies each row and cannot be NULL.\n- Foreign key: refers to the primary key of another table.\n\nJoins:\n- INNER JOIN: only rows that match in both tables.\n- LEFT JOIN: every row from the left table, with NULLs where nothing matches.\n\nWHERE filters rows before grouping. HAVING filters groups after GROUP BY.\n\nClassic question: find the second-highest salary.\nSELECT MAX(salary) FROM emp WHERE salary < (SELECT MAX(salary) FROM emp);",
+              "url": "https://en.wikipedia.org/wiki/Join_(SQL)"
+            },
+            {
+              "title": "Normalisation, ACID and indexes",
+              "level": "advanced",
+              "body": "Normal forms:\n- 1NF: every column holds a single value.\n- 2NF: 1NF, and no column depends on only part of a composite key.\n- 3NF: 2NF, and no non-key column depends on another non-key column.\n\nACID properties of transactions:\n- Atomicity: all or nothing.\n- Consistency: the database moves from one valid state to another.\n- Isolation: concurrent transactions don't interfere.\n- Durability: committed data survives a crash.\n\nIndexes (usually B-trees) make reads fast but slow down writes and use extra space.",
+              "url": "https://en.wikipedia.org/wiki/ACID"
+            }
+          ],
+          "questions": [
+            {"text": "Which key uniquely identifies each row and cannot be NULL?", "options": ["Primary key", "Foreign key", "Candidate key that allows NULL", "Composite index"], "answer": 0, "difficulty": 1, "explanation": "Every table should have one primary key."},
+            {"text": "Which join returns all rows from the left table, even when there is no match?", "options": ["LEFT JOIN", "INNER JOIN", "CROSS JOIN", "SELF JOIN"], "answer": 0, "difficulty": 1, "explanation": "Unmatched rows get NULLs for the right table's columns."},
+            {"text": "Which clause filters groups after GROUP BY?", "options": ["HAVING", "WHERE", "ORDER BY", "LIMIT"], "answer": 0, "difficulty": 2, "explanation": "WHERE runs before grouping, HAVING runs after it."},
+            {"text": "The 'A' in ACID stands for:", "options": ["Atomicity", "Availability", "Accuracy", "Authorisation"], "answer": 0, "difficulty": 2, "explanation": "A transaction either completes fully or not at all."},
+            {"text": "What is the main downside of adding many indexes to a table?", "options": ["Slower inserts and updates", "Slower SELECT queries", "Data loss", "It breaks foreign keys"], "answer": 0, "difficulty": 3, "explanation": "Every write must also update each index."}
+          ]
+        },
+        {
+          "name": "Operating Systems",
+          "materials": [
+            {
+              "title": "Processes, threads and scheduling",
+              "level": "basic",
+              "body": "- Process: a running program with its own memory space.\n- Thread: a unit of work inside a process. Threads share the process's memory, so switching between them is cheaper.\n- Context switch: saving one task's state and loading another's.\n\nCPU scheduling:\n- FCFS: first come, first served.\n- SJF: shortest job first. Gives the lowest average waiting time but needs to know job lengths.\n- Round robin: each task gets a fixed time slice in turn. Common in time-sharing systems.",
+              "url": "https://en.wikipedia.org/wiki/Process_(computing)"
+            },
+            {
+              "title": "Deadlocks and memory",
+              "level": "advanced",
+              "body": "A deadlock needs all four of these (Coffman conditions):\n1. Mutual exclusion\n2. Hold and wait\n3. No preemption\n4. Circular wait\nBreak any one of them to prevent deadlock. The Banker's algorithm avoids it by only granting safe requests.\n\nMemory:\n- Paging splits memory into fixed-size pages, so there is no external fragmentation.\n- Virtual memory lets a program use more memory than the physical RAM by keeping pages on disk.\n- Thrashing: the system spends more time swapping pages than doing useful work.\n\nA mutex lets one thread in at a time. A semaphore can allow up to N.",
+              "url": "https://en.wikipedia.org/wiki/Deadlock_(computer_science)"
+            }
+          ],
+          "questions": [
+            {"text": "What do threads of the same process share?", "options": ["The same memory space", "Separate memory spaces", "Nothing at all", "Only the CPU registers"], "answer": 0, "difficulty": 1, "explanation": "Threads share code, data and heap, but each has its own stack and registers."},
+            {"text": "Which scheduling algorithm gives every process a fixed time slice in turn?", "options": ["Round robin", "FCFS", "SJF", "Priority without preemption"], "answer": 0, "difficulty": 1, "explanation": "Round robin cycles through ready processes using a time quantum."},
+            {"text": "Which of these is NOT one of the four conditions needed for deadlock?", "options": ["Preemption", "Mutual exclusion", "Hold and wait", "Circular wait"], "answer": 0, "difficulty": 2, "explanation": "The condition is NO preemption. Allowing preemption prevents deadlock."},
+            {"text": "Paging removes which problem?", "options": ["External fragmentation", "Internal fragmentation", "Deadlock", "Starvation"], "answer": 0, "difficulty": 2, "explanation": "Fixed-size pages fit into any free frame. Some internal fragmentation can remain in the last page."},
+            {"text": "When a system spends most of its time swapping pages in and out, it is called:", "options": ["Thrashing", "Starvation", "Spooling", "Caching"], "answer": 0, "difficulty": 3, "explanation": "There are too many processes for the physical memory available."}
+          ]
+        },
+        {
+          "name": "Computer Networks",
+          "materials": [
+            {
+              "title": "OSI layers, TCP and UDP",
+              "level": "basic",
+              "body": "OSI model, top to bottom: Application, Presentation, Session, Transport, Network, Data link, Physical.\n\n- TCP: connection-based and reliable. Data arrives in order and lost packets are resent. Used for web pages and email.\n- UDP: connectionless and fast, with no delivery guarantee. Used for video calls, gaming and DNS.\n\nCommon ports: HTTP 80, HTTPS 443, DNS 53, SSH 22.\n\nDNS translates a domain name like example.com into an IP address.",
+              "url": "https://en.wikipedia.org/wiki/OSI_model"
+            },
+            {
+              "title": "What happens when you type a URL",
+              "level": "advanced",
+              "body": "A favourite interview question. Walk through it in order:\n1. The browser checks its cache, then asks DNS for the IP address.\n2. It opens a TCP connection with a 3-way handshake (SYN, SYN-ACK, ACK).\n3. For HTTPS, a TLS handshake sets up encryption.\n4. The browser sends an HTTP request and the server returns a response with a status code (200 OK, 301 redirect, 404 not found, 500 server error).\n5. The browser parses the HTML and fetches the CSS, JS and images, then renders the page.\n\nHTTP is stateless. Cookies or tokens keep you logged in between requests.",
+              "url": "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+            }
+          ],
+          "questions": [
+            {"text": "Which protocol guarantees reliable, in-order delivery?", "options": ["TCP", "UDP", "IP", "ICMP"], "answer": 0, "difficulty": 1, "explanation": "TCP uses acknowledgements and resends lost packets."},
+            {"text": "What is the default port for HTTPS?", "options": ["443", "80", "22", "53"], "answer": 0, "difficulty": 1, "explanation": "HTTP uses 80 and HTTPS uses 443."},
+            {"text": "What does DNS do?", "options": ["Turns domain names into IP addresses", "Encrypts web traffic", "Assigns MAC addresses", "Routes packets between networks"], "answer": 0, "difficulty": 2, "explanation": "DNS is like the phone book of the internet."},
+            {"text": "Which layer of the OSI model does TCP belong to?", "options": ["Transport", "Network", "Session", "Data link"], "answer": 0, "difficulty": 2, "explanation": "TCP and UDP are layer 4, the transport layer."},
+            {"text": "What is the correct order of the TCP 3-way handshake?", "options": ["SYN, SYN-ACK, ACK", "ACK, SYN, SYN-ACK", "SYN, ACK, FIN", "HELLO, ACK, DATA"], "answer": 0, "difficulty": 3, "explanation": "The client sends SYN, the server replies SYN-ACK and the client confirms with ACK."}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Aptitude",
+      "topics": [
+        {
+          "name": "Percentages, Profit & Loss",
+          "materials": [
+            {
+              "title": "Percentage shortcuts",
+              "level": "basic",
+              "body": "- x% of y = x * y / 100\n- Percentage change = (new - old) / old * 100\n- Profit % = profit / cost price * 100\n- Selling price = cost price * (1 + profit% / 100)\n\nQuick tricks:\n- 10% of a number: move the decimal point one place left.\n- 25% = 1/4, 20% = 1/5, 12.5% = 1/8.",
+              "url": "https://en.wikipedia.org/wiki/Percentage"
+            },
+            {
+              "title": "Successive changes and traps",
+              "level": "advanced",
+              "body": "Two changes of a% and b% in a row give a net change of a + b + (a*b)/100.\n- Example: +20% then -20% gives 20 - 20 - 4 = -4%, a 4% loss, not 0.\n\nIf A is r% more than B, then B is r/(100 + r) * 100 % less than A.\n- Example: A is 25% more than B, so B is 25/125 = 20% less than A.\n\nProfit and loss are always calculated on the cost price unless the question says otherwise.",
+              "url": "https://en.wikipedia.org/wiki/Percentage"
+            }
+          ],
+          "questions": [
+            {"text": "What is 15% of 240?", "options": ["36", "24", "32", "40"], "answer": 0, "difficulty": 1, "explanation": "10% is 24 and 5% is 12, so 15% is 36."},
+            {"text": "An item bought for 400 is sold for 500. What is the profit percentage?", "options": ["25%", "20%", "100%", "50%"], "answer": 0, "difficulty": 1, "explanation": "Profit 100 on a cost of 400 is 25%."},
+            {"text": "A price goes up by 20% and then down by 20%. What is the overall change?", "options": ["4% decrease", "No change", "4% increase", "2% decrease"], "answer": 0, "difficulty": 2, "explanation": "20 - 20 + (20 * -20)/100 = -4%."},
+            {"text": "A salary rises from 25,000 to 30,000. What is the percentage increase?", "options": ["20%", "16.67%", "25%", "5%"], "answer": 0, "difficulty": 2, "explanation": "5,000 / 25,000 = 20%."},
+            {"text": "A is 25% more than B. By what percentage is B less than A?", "options": ["20%", "25%", "15%", "30%"], "answer": 0, "difficulty": 3, "explanation": "25 / (100 + 25) = 1/5 = 20%."}
+          ]
+        },
+        {
+          "name": "Time & Work",
+          "materials": [
+            {
+              "title": "Work rate basics",
+              "level": "basic",
+              "body": "If A finishes a job in a days, A does 1/a of the job per day.\n\nWorking together, the rates add up:\n- Together time = 1 / (1/a + 1/b) = a*b / (a + b)\n\nExample: A takes 10 days and B takes 15 days. Together: 150 / 25 = 6 days.\n\nSame idea for pipes filling a tank. A pipe that empties the tank has a negative rate.",
+              "url": "https://en.wikipedia.org/wiki/Work_(physics)"
+            },
+            {
+              "title": "LCM method and partial work",
+              "level": "advanced",
+              "body": "LCM method: take the total work as the LCM of the days, so every rate is a whole number.\n- Example: A takes 12 days and B takes 18. Total work = 36 units. A does 3 units/day, B does 2, together 5. Time = 36/5 = 7.2 days.\n\nPartial work: if A works for some days and then leaves, subtract the work already done and divide what's left by the remaining rate.\n\nMen-days: M1 * D1 = M2 * D2 when the amount of work stays the same.",
+              "url": "https://en.wikipedia.org/wiki/Least_common_multiple"
+            }
+          ],
+          "questions": [
+            {"text": "A can finish a job in 10 days. How much of the job does A do in one day?", "options": ["1/10", "10", "1/5", "1/20"], "answer": 0, "difficulty": 1, "explanation": "The rate is 1 job per 10 days."},
+            {"text": "A takes 10 days and B takes 15 days. How long do they take working together?", "options": ["6 days", "12.5 days", "5 days", "25 days"], "answer": 0, "difficulty": 1, "explanation": "10 * 15 / (10 + 15) = 6 days."},
+            {"text": "12 workers finish a job in 8 days. How many days would 16 workers take?", "options": ["6 days", "10 days", "4 days", "12 days"], "answer": 0, "difficulty": 2, "explanation": "12 * 8 = 96 worker-days, and 96 / 16 = 6."},
+            {"text": "A takes 12 days and B takes 18 days. How long do they take together?", "options": ["7.2 days", "15 days", "6 days", "30 days"], "answer": 0, "difficulty": 2, "explanation": "Total work 36 units, combined rate 5 units/day, so 36/5 = 7.2 days."},
+            {"text": "Pipe A fills a tank in 6 hours and pipe B empties it in 12 hours. With both open, how long does the tank take to fill?", "options": ["12 hours", "4 hours", "18 hours", "9 hours"], "answer": 0, "difficulty": 3, "explanation": "1/6 - 1/12 = 1/12 of the tank per hour."}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HR & Behavioural",
+      "topics": [
+        {
+          "name": "Answering with STAR",
+          "materials": [
+            {
+              "title": "The STAR method",
+              "level": "basic",
+              "body": "Behavioural questions ('Tell me about a time when...') are best answered with STAR:\n- Situation: the background, in one or two sentences.\n- Task: what you were responsible for.\n- Action: what YOU did. This should be the longest part. Say 'I', not 'we'.\n- Result: the outcome, with numbers if possible, and what you learned.\n\nAim for about 1.5 to 2 minutes per answer. Prepare 5 or 6 stories that cover teamwork, conflict, failure, leadership and a deadline.",
+              "url": "https://en.wikipedia.org/wiki/Situation,_task,_action,_result"
+            },
+            {
+              "title": "Making STAR answers stand out",
+              "level": "advanced",
+              "body": "- Lead with the result when time is short: 'I cut the build time by 40%. Here's how...'\n- Show reflection: what you would do differently next time.\n- For failure questions, pick a real mistake, take ownership, and spend most of the time on what you changed afterwards.\n- For conflict questions, never blame. Focus on listening, finding common goals and the outcome for the team.\n- Reuse the same story for different questions by changing which part you emphasise.",
+              "url": "https://en.wikipedia.org/wiki/Situation,_task,_action,_result"
+            }
+          ],
+          "questions": [
+            {"text": "What does the 'A' in the STAR method stand for?", "options": ["Action", "Achievement", "Attitude", "Analysis"], "answer": 0, "difficulty": 1, "explanation": "Situation, Task, Action, Result."},
+            {"text": "Which part of a STAR answer should usually take the most time?", "options": ["Action", "Situation", "Task", "The introduction"], "answer": 0, "difficulty": 1, "explanation": "Interviewers want to know what you personally did."},
+            {"text": "When describing a team project, it's best to:", "options": ["Say 'I' for your own contribution", "Say 'we' for everything", "Only talk about the team leader", "Avoid mentioning the team"], "answer": 0, "difficulty": 2, "explanation": "Give the team credit, but make your own actions clear."},
+            {"text": "'Tell me about a time you failed.' What is the best approach?", "options": ["Share a real mistake, own it, and explain what you changed", "Say you have never failed", "Blame a teammate", "Describe a strength disguised as a weakness"], "answer": 0, "difficulty": 2, "explanation": "Interviewers are testing honesty and how you learn."},
+            {"text": "What makes the Result part of a STAR answer strongest?", "options": ["A measurable outcome and what you learned", "A very long description", "Leaving it vague so they ask more", "Repeating the situation"], "answer": 0, "difficulty": 3, "explanation": "Numbers ('reduced errors by 30%') make an impact concrete."}
+          ]
+        },
+        {
+          "name": "Common HR Questions",
+          "materials": [
+            {
+              "title": "Answering the classics",
+              "level": "basic",
+              "body": "- 'Tell me about yourself': present (current role or studies), past (relevant experience), future (why this job). Keep it under 2 minutes.\n- 'Why should we hire you?': match 2 or 3 of your strengths to the job description, with a short example each.\n- 'What is your weakness?': a real but manageable weakness, plus what you are doing to improve it.\n- 'Where do you see yourself in 5 years?': growth in skills and responsibility that fits the company.\n\nAlways research the company and prepare 2 or 3 questions to ask at the end.",
+              "url": "https://en.wikipedia.org/wiki/Job_interview"
+            },
+            {
+              "title": "Salary, gaps and tricky questions",
+              "level": "advanced",
+              "body": "- Salary expectations: research the market range first. Give a range, and say you are flexible based on the whole package.\n- Gaps in your CV: be honest and brief, and mention what you learned or did during that time.\n- 'Why are you leaving your current job?': stay positive and talk about growth, never complain about your employer.\n- Questions to ask them: what success looks like in the first 90 days, how the team works, and what the next steps are.\n\nBody language: sit upright, keep eye contact with the camera in online interviews, and smile naturally.",
+              "url": "https://en.wikipedia.org/wiki/Job_interview"
+            }
+          ],
+          "questions": [
+            {"text": "What is a good structure for 'Tell me about yourself'?", "options": ["Present, past, future", "Childhood to today", "Hobbies first, then work", "Read out your CV word for word"], "answer": 0, "difficulty": 1, "explanation": "It keeps the answer short, relevant and ending on why you want this job."},
+            {"text": "How long should 'Tell me about yourself' usually take?", "options": ["About 1-2 minutes", "10 seconds", "10 minutes", "As long as possible"], "answer": 0, "difficulty": 1, "explanation": "Long enough to be useful, short enough to keep attention."},
+            {"text": "What is the best way to answer 'What is your weakness?'", "options": ["A real weakness plus how you are improving it", "'I'm a perfectionist' with no example", "'I have no weaknesses'", "A weakness that is essential for the job"], "answer": 0, "difficulty": 2, "explanation": "It shows self-awareness and a willingness to grow."},
+            {"text": "Asked why you are leaving your current job, you should:", "options": ["Focus positively on growth and new challenges", "Complain about your manager", "Say it's only about money", "Refuse to answer"], "answer": 0, "difficulty": 2, "explanation": "Negativity about a past employer is a red flag for interviewers."},
+            {"text": "At the end of an interview, when asked 'Do you have any questions?', you should:", "options": ["Ask 2-3 thoughtful questions about the role or team", "Say 'No, thanks'", "Ask only about holidays and salary", "Ask what the company does"], "answer": 0, "difficulty": 3, "explanation": "Good questions show interest and that you've done your research."}
+          ]
+        }
+      ]
+    }
+  ]
+}
